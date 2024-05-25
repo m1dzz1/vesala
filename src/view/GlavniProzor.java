@@ -14,7 +14,8 @@ public class GlavniProzor extends javax.swing.JFrame {
      * Creates new form GlavniProzor
      */
     public GlavniProzor() {
-        initComponents();
+        initComponents(); 
+        
     }
 
     /**
