@@ -4,6 +4,7 @@
  */
 package proba;
 
+import view.GlavniProzor;
 import view.loadingScreen;
 
 /**
@@ -16,7 +17,8 @@ public class Proba {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        
+       //mozda bude problem
+       
         
     }
     

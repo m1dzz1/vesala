@@ -4,6 +4,12 @@
  */
 package view;
 
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import model.DatabaseUpravljac;
+import model.Rec;
+
 /**
  *
  * @author User
@@ -13,8 +19,10 @@ public class UnosReci extends javax.swing.JFrame {
     /**
      * Creates new form UnosReci
      */
+    private DatabaseUpravljac dbu;
     public UnosReci() {
         initComponents();
+        dbu=new DatabaseUpravljac();
     }
 
     /**
@@ -124,10 +132,12 @@ public class UnosReci extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        DodajRec();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
         // TODO add your handling code here:
+        
     }//GEN-LAST:event_jTextField2ActionPerformed
 
     private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
@@ -177,4 +187,23 @@ public class UnosReci extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     // End of variables declaration//GEN-END:variables
+
+    private void DodajRec(){
+        int idKat=Integer.parseInt(jTextField3.getText());
+        String rec=jTextField2.getText();
+        System.out.println(idKat + rec);
+        Rec r1 = new Rec(rec, idKat);
+        try {
+            dbu.DodajRec(r1.getRec(),r1.getKategorijaID());
+        } catch (SQLException ex) {
+            Logger.getLogger(UnosReci.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }
+    
+    
+    
+
+
+
 }
