@@ -124,7 +124,7 @@ public class loadingScreen extends javax.swing.JFrame {
         ls.setVisible(true);
         try{
             for(int i=0;i<=100;i++){
-                Thread.sleep(70);
+                Thread.sleep(10);
                 ls.jLabel4.setText(i+" %");
                 
                 if(i==10){

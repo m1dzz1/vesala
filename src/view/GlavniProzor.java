@@ -4,6 +4,11 @@
  */
 package view;
 
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import model.DatabaseUpravljac;
+
 /**
  *
  * @author User
@@ -13,9 +18,10 @@ public class GlavniProzor extends javax.swing.JFrame {
     /**
      * Creates new form GlavniProzor
      */
+    private DatabaseUpravljac dbu;
     public GlavniProzor() {
         initComponents(); 
-        
+        dbu=new DatabaseUpravljac();
     }
     
     
@@ -49,6 +55,11 @@ public class GlavniProzor extends javax.swing.JFrame {
         jButton1.setAlignmentX(1.0F);
         jButton1.setAlignmentY(1.0F);
         jButton1.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(204, 204, 204), java.awt.Color.white));
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton3.setBackground(new java.awt.Color(102, 153, 255));
         jButton3.setForeground(new java.awt.Color(255, 255, 255));
@@ -106,6 +117,12 @@ public class GlavniProzor extends javax.swing.JFrame {
         ur.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        Igra i=new Igra();
+        i.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments

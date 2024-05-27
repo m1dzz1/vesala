@@ -26,4 +26,7 @@ public class Rec {
     public int getKategorijaID() {
         return kID;
     }
+    public String toString(){
+        return r;
+    }
 }
