@@ -20,19 +20,20 @@ public class DatabaseUpravljac {
     
     private Connection c;
 
+
     public DatabaseUpravljac(){//1
         
     try
     {//2
-    c=DriverManager.getConnection("jdbc:ucanaccess://src\\resursi\\DatabaseVesala.accdb");
+     c = DriverManager.getConnection("jdbc:ucanaccess://src\\resursi\\DatabaseVesala.accdb");
     }//2
     catch(SQLException ex)
     {
         Logger.getLogger(DatabaseUpravljac.class.getName()).log(Level.SEVERE, null, ex);
-            JOptionPane.showMessageDialog(null, "Ne mogu da se povezem sa bazom", "Greska", JOptionPane.ERROR_MESSAGE);
+        JOptionPane.showMessageDialog(null, "Ne mogu da se povezem sa bazom", "Greska", JOptionPane.ERROR_MESSAGE);
     }
     
-}//1
+    }//1
     
     
 
@@ -42,6 +43,7 @@ public class DatabaseUpravljac {
         preparedStatement.setString(1, r);
         preparedStatement.setInt(2, kID);
         preparedStatement.executeUpdate();
+        
     }
 
     public void DodajKategoriju(String ka) throws SQLException {
@@ -49,6 +51,7 @@ public class DatabaseUpravljac {
         PreparedStatement preparedStatement = c.prepareStatement(query);
         preparedStatement.setString(1, ka);
         preparedStatement.executeUpdate();
+        
     }
 
     public Rec getRandomRec() throws SQLException {
@@ -61,6 +64,23 @@ public class DatabaseUpravljac {
         }
         Random random = new Random();
         return reci.get(random.nextInt(reci.size()));
+    }
+    public ArrayList<Kategorija> getKategorije(){
+        try{
+            ArrayList<Kategorija> lista = new ArrayList<Kategorija>();
+            Statement s=c.createStatement();
+            ResultSet rs=s.executeQuery("SELECT * FROM Kategorije");
+            while(rs.next()){
+                int id = rs.getInt("KategorijaID");
+                String ime = rs.getString("KategorijaIme");
+                Kategorija kat = new Kategorija(id,ime);
+                lista.add(kat);
+            }
+            return lista;
+        }catch(SQLException e){
+            JOptionPane.showMessageDialog(null, "Greska pri dohvatanja podataka iz baze", "Greska", JOptionPane.ERROR_MESSAGE);
+        }
+        return null;
     }
 }
     
