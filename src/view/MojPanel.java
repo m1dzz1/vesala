@@ -23,11 +23,11 @@ public class MojPanel extends javax.swing.JPanel {
     public MojPanel() {
         initComponents();
     }
-
+    
     @Override
     public void paint(Graphics g){
         int x1=10,x2=30,y1=10,y2=10;
-        
+        Igra ig = new Igra();
         for(int i=0;i<ig.dajBrRec();i++){
             x1+=50;
             x2+=50;
