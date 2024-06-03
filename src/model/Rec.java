@@ -23,6 +23,10 @@ public class Rec {
         return r;
     }
 
+    public void setRec(String r) {
+        this.r = r;
+    }
+
     public int getKategorijaID() {
         return kID;
     }

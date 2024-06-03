@@ -17,23 +17,29 @@ import model.Rec;
  */
 public class MojPanel extends javax.swing.JPanel {
 
+    private int brojSlova;
+
     /**
      * Creates new form MojPanel
      */
+   
     public MojPanel() {
         initComponents();
+        
     }
     
     @Override
-    public void paint(Graphics g){
+    public void paint(Graphics g){ 
         int x1=10,x2=30,y1=10,y2=10;
-        Igra ig = new Igra();
-        for(int i=0;i<ig.dajBrRec();i++){
+        for(int i=0;i<brojSlova;i++){
             x1+=50;
             x2+=50;
-            this.getGraphics().drawLine(x1, y1, x2, y2);
-            System.out.println(x1+" "+x2+" "+y1+" "+y2);
+            g.drawLine(x1, y1, x2, y2);
         }
+    }
+
+    public void setBrojSlova(int brojSlova) {
+        this.brojSlova = brojSlova;
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents

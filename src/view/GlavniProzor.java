@@ -122,6 +122,7 @@ public class GlavniProzor extends javax.swing.JFrame {
         Igra i=new Igra();
         i.setVisible(true);
         dispose();
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
