@@ -426,15 +426,17 @@ public class Igra extends javax.swing.JFrame {
 
         jLabel10.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
+        hangmanPanel1.setBackground(new java.awt.Color(102, 153, 255));
+
         javax.swing.GroupLayout hangmanPanel1Layout = new javax.swing.GroupLayout(hangmanPanel1);
         hangmanPanel1.setLayout(hangmanPanel1Layout);
         hangmanPanel1Layout.setHorizontalGroup(
             hangmanPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 358, Short.MAX_VALUE)
+            .addGap(0, 250, Short.MAX_VALUE)
         );
         hangmanPanel1Layout.setVerticalGroup(
             hangmanPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 166, Short.MAX_VALUE)
+            .addGap(0, 300, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
