@@ -19,7 +19,6 @@ public class Igra extends javax.swing.JFrame {
     private DatabaseUpravljac dbu;
     Rec rec = null;
     char[] slova;
-
     public Igra() {
         initComponents();
         dbu = new DatabaseUpravljac();
@@ -30,6 +29,7 @@ public class Igra extends javax.swing.JFrame {
             mojPanel1.setBrojSlova(dajBrRec());
             slova = rec.getRec().toCharArray();
             System.out.println(rec.getRec());
+            
         } catch (SQLException ex) {
             Logger.getLogger(MojPanel.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -38,7 +38,9 @@ public class Igra extends javax.swing.JFrame {
     public int dajBrRec() {
         return rec.getRec().length();
     }
-
+        public void updateWordDisplay(char foundChar, char slovo) {
+        mojPanel1.updateWordDisplay(foundChar, slovo);
+}
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -48,6 +50,7 @@ public class Igra extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jProgressBar1 = new javax.swing.JProgressBar();
         jPanel1 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
@@ -77,6 +80,7 @@ public class Igra extends javax.swing.JFrame {
         jButton26 = new javax.swing.JButton();
         jButton27 = new javax.swing.JButton();
         mojPanel1 = new view.MojPanel();
+        jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -86,7 +90,6 @@ public class Igra extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -399,8 +402,10 @@ public class Igra extends javax.swing.JFrame {
         );
         mojPanel1Layout.setVerticalGroup(
             mojPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 20, Short.MAX_VALUE)
+            .addGap(0, 28, Short.MAX_VALUE)
         );
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
@@ -419,8 +424,6 @@ public class Igra extends javax.swing.JFrame {
         jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
         jLabel10.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -494,38 +497,39 @@ public class Igra extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(123, 123, 123)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(36, 36, 36)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(24, 24, 24)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32)
-                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
-                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
-                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(29, 29, 29)
-                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28)
-                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28)
-                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(61, Short.MAX_VALUE)
-                .addComponent(mojPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(72, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(123, 123, 123)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(36, 36, 36)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(24, 24, 24)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(27, 27, 27)
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(32, 32, 32)
+                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(26, 26, 26)
+                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(27, 27, 27)
+                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(29, 29, 29)
+                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(28, 28, 28)
+                        .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(28, 28, 28)
+                        .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(45, 45, 45)
+                        .addComponent(mojPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(75, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jButton27)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 222, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 221, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(jLabel2)
@@ -578,7 +582,10 @@ public class Igra extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -588,365 +595,435 @@ public class Igra extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
+    
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         String s =jButton1.getText().toLowerCase();
         char slovo = s.charAt(0);
         boolean contains = false;
+        char foundChar = ' ';
         for (char c : slova) {
             if (c == slovo) {
                 contains = true;
+                 foundChar = c;
                 break;
             }
         }
         if (contains) {
+            mojPanel1.updateWordDisplay(foundChar, slovo);
             System.out.println("ima slovo");
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        String s =jButton4.getText().toLowerCase();
+        String s =jButton1.getText().toLowerCase();
         char slovo = s.charAt(0);
         boolean contains = false;
+        char foundChar = ' ';
         for (char c : slova) {
             if (c == slovo) {
                 contains = true;
+                 foundChar = c;
                 break;
             }
         }
         if (contains) {
+            mojPanel1.updateWordDisplay(foundChar, slovo);
             System.out.println("ima slovo");
         }
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        String s =jButton5.getText().toLowerCase();
+        String s =jButton1.getText().toLowerCase();
         char slovo = s.charAt(0);
         boolean contains = false;
+        char foundChar = ' ';
         for (char c : slova) {
             if (c == slovo) {
                 contains = true;
+                 foundChar = c;
                 break;
             }
         }
         if (contains) {
+            mojPanel1.updateWordDisplay(foundChar, slovo);
             System.out.println("ima slovo");
         }
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        String s =jButton6.getText().toLowerCase();
+        String s =jButton1.getText().toLowerCase();
         char slovo = s.charAt(0);
         boolean contains = false;
+        char foundChar = ' ';
         for (char c : slova) {
             if (c == slovo) {
                 contains = true;
+                 foundChar = c;
                 break;
             }
         }
         if (contains) {
+            mojPanel1.updateWordDisplay(foundChar, slovo);
             System.out.println("ima slovo");
         }
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        String s =jButton7.getText().toLowerCase();
+        String s =jButton1.getText().toLowerCase();
         char slovo = s.charAt(0);
         boolean contains = false;
+        char foundChar = ' ';
         for (char c : slova) {
             if (c == slovo) {
                 contains = true;
+                 foundChar = c;
                 break;
             }
         }
         if (contains) {
+            mojPanel1.updateWordDisplay(foundChar, slovo);
             System.out.println("ima slovo");
         }
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-        String s =jButton8.getText().toLowerCase();
+        String s =jButton1.getText().toLowerCase();
         char slovo = s.charAt(0);
         boolean contains = false;
+        char foundChar = ' ';
         for (char c : slova) {
             if (c == slovo) {
                 contains = true;
+                 foundChar = c;
                 break;
             }
         }
         if (contains) {
+            mojPanel1.updateWordDisplay(foundChar, slovo);
             System.out.println("ima slovo");
         }
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
-        String s =jButton9.getText().toLowerCase();
+        String s =jButton1.getText().toLowerCase();
         char slovo = s.charAt(0);
         boolean contains = false;
+        char foundChar = ' ';
         for (char c : slova) {
             if (c == slovo) {
                 contains = true;
+                 foundChar = c;
                 break;
             }
         }
         if (contains) {
+            mojPanel1.updateWordDisplay(foundChar, slovo);
             System.out.println("ima slovo");
         }
     }//GEN-LAST:event_jButton9ActionPerformed
 
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
-        String s = jButton10.getText().toLowerCase();
+        String s =jButton1.getText().toLowerCase();
         char slovo = s.charAt(0);
         boolean contains = false;
+        char foundChar = ' ';
         for (char c : slova) {
             if (c == slovo) {
                 contains = true;
+                 foundChar = c;
                 break;
             }
         }
         if (contains) {
+            mojPanel1.updateWordDisplay(foundChar, slovo);
             System.out.println("ima slovo");
         }
     }//GEN-LAST:event_jButton10ActionPerformed
 
     private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
-        String s =jButton11.getText().toLowerCase();
+        String s =jButton1.getText().toLowerCase();
         char slovo = s.charAt(0);
         boolean contains = false;
+        char foundChar = ' ';
         for (char c : slova) {
             if (c == slovo) {
                 contains = true;
+                 foundChar = c;
                 break;
             }
         }
         if (contains) {
+            mojPanel1.updateWordDisplay(foundChar, slovo);
             System.out.println("ima slovo");
         }
     }//GEN-LAST:event_jButton11ActionPerformed
 
     private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
-       String s =jButton12.getText().toLowerCase();
+       String s =jButton1.getText().toLowerCase();
         char slovo = s.charAt(0);
         boolean contains = false;
+        char foundChar = ' ';
         for (char c : slova) {
             if (c == slovo) {
                 contains = true;
+                 foundChar = c;
                 break;
             }
         }
         if (contains) {
+            mojPanel1.updateWordDisplay(foundChar, slovo);
             System.out.println("ima slovo");
         }
     }//GEN-LAST:event_jButton12ActionPerformed
 
     private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
-       String s =jButton13.getText().toLowerCase();
+       String s =jButton1.getText().toLowerCase();
         char slovo = s.charAt(0);
         boolean contains = false;
+        char foundChar = ' ';
         for (char c : slova) {
             if (c == slovo) {
                 contains = true;
+                 foundChar = c;
                 break;
             }
         }
         if (contains) {
+            mojPanel1.updateWordDisplay(foundChar, slovo);
             System.out.println("ima slovo");
         }
     }//GEN-LAST:event_jButton13ActionPerformed
 
     private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton14ActionPerformed
-        String s =jButton14.getText().toLowerCase();
+        String s =jButton1.getText().toLowerCase();
         char slovo = s.charAt(0);
         boolean contains = false;
+        char foundChar = ' ';
         for (char c : slova) {
             if (c == slovo) {
                 contains = true;
+                 foundChar = c;
                 break;
             }
         }
         if (contains) {
+            mojPanel1.updateWordDisplay(foundChar, slovo);
             System.out.println("ima slovo");
         }
     }//GEN-LAST:event_jButton14ActionPerformed
 
     private void jButton15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton15ActionPerformed
-
-        String s = jButton15.getText();
+String s =jButton1.getText().toLowerCase();
         char slovo = s.charAt(0);
         boolean contains = false;
-        System.out.println(s);
+        char foundChar = ' ';
         for (char c : slova) {
             if (c == slovo) {
                 contains = true;
+                 foundChar = c;
                 break;
             }
         }
         if (contains) {
+            mojPanel1.updateWordDisplay(foundChar, slovo);
             System.out.println("ima slovo");
         }
     }//GEN-LAST:event_jButton15ActionPerformed
 
     private void jButton16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton16ActionPerformed
-        String s =jButton16.getText().toLowerCase();
+        String s =jButton1.getText().toLowerCase();
         char slovo = s.charAt(0);
         boolean contains = false;
+        char foundChar = ' ';
         for (char c : slova) {
             if (c == slovo) {
                 contains = true;
+                 foundChar = c;
                 break;
             }
         }
         if (contains) {
+            mojPanel1.updateWordDisplay(foundChar, slovo);
             System.out.println("ima slovo");
         }
     }//GEN-LAST:event_jButton16ActionPerformed
 
     private void jButton17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton17ActionPerformed
-        String s =jButton17.getText().toLowerCase();
+        String s =jButton1.getText().toLowerCase();
         char slovo = s.charAt(0);
         boolean contains = false;
+        char foundChar = ' ';
         for (char c : slova) {
             if (c == slovo) {
                 contains = true;
+                 foundChar = c;
                 break;
             }
         }
         if (contains) {
+            mojPanel1.updateWordDisplay(foundChar, slovo);
             System.out.println("ima slovo");
         }
     }//GEN-LAST:event_jButton17ActionPerformed
 
     private void jButton18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton18ActionPerformed
-        String s =jButton18.getText().toLowerCase();
+        String s =jButton1.getText().toLowerCase();
         char slovo = s.charAt(0);
         boolean contains = false;
+        char foundChar = ' ';
         for (char c : slova) {
             if (c == slovo) {
                 contains = true;
+                 foundChar = c;
                 break;
             }
         }
         if (contains) {
+            mojPanel1.updateWordDisplay(foundChar, slovo);
             System.out.println("ima slovo");
         }
     }//GEN-LAST:event_jButton18ActionPerformed
 
     private void jButton19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton19ActionPerformed
-        String s =jButton19.getText().toLowerCase();
+        String s =jButton1.getText().toLowerCase();
         char slovo = s.charAt(0);
         boolean contains = false;
+        char foundChar = ' ';
         for (char c : slova) {
             if (c == slovo) {
                 contains = true;
+                 foundChar = c;
                 break;
             }
         }
         if (contains) {
+            mojPanel1.updateWordDisplay(foundChar, slovo);
             System.out.println("ima slovo");
         }
     }//GEN-LAST:event_jButton19ActionPerformed
 
     private void jButton20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton20ActionPerformed
-        String s =jButton20.getText().toLowerCase();
+        String s =jButton1.getText().toLowerCase();
         char slovo = s.charAt(0);
         boolean contains = false;
+        char foundChar = ' ';
         for (char c : slova) {
             if (c == slovo) {
                 contains = true;
+                 foundChar = c;
                 break;
             }
         }
         if (contains) {
+            mojPanel1.updateWordDisplay(foundChar, slovo);
             System.out.println("ima slovo");
         }
     }//GEN-LAST:event_jButton20ActionPerformed
 
     private void jButton21ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton21ActionPerformed
-        String s =jButton21.getText().toLowerCase();
+        String s =jButton1.getText().toLowerCase();
         char slovo = s.charAt(0);
         boolean contains = false;
+        char foundChar = ' ';
         for (char c : slova) {
             if (c == slovo) {
                 contains = true;
+                 foundChar = c;
                 break;
             }
         }
         if (contains) {
+            mojPanel1.updateWordDisplay(foundChar, slovo);
             System.out.println("ima slovo");
         }
     }//GEN-LAST:event_jButton21ActionPerformed
 
     private void jButton22ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton22ActionPerformed
-        String s =jButton22.getText().toLowerCase();
+        String s =jButton1.getText().toLowerCase();
         char slovo = s.charAt(0);
         boolean contains = false;
+        char foundChar = ' ';
         for (char c : slova) {
             if (c == slovo) {
                 contains = true;
+                 foundChar = c;
                 break;
             }
         }
         if (contains) {
+            mojPanel1.updateWordDisplay(foundChar, slovo);
             System.out.println("ima slovo");
         }
     }//GEN-LAST:event_jButton22ActionPerformed
 
     private void jButton23ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton23ActionPerformed
-        String s =jButton23.getText().toLowerCase();
+        String s =jButton1.getText().toLowerCase();
         char slovo = s.charAt(0);
         boolean contains = false;
+        char foundChar = ' ';
         for (char c : slova) {
             if (c == slovo) {
                 contains = true;
+                 foundChar = c;
                 break;
             }
         }
         if (contains) {
+            mojPanel1.updateWordDisplay(foundChar, slovo);
             System.out.println("ima slovo");
         }
     }//GEN-LAST:event_jButton23ActionPerformed
 
     private void jButton24ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton24ActionPerformed
-        String s =jButton24.getText().toLowerCase();
+        String s =jButton1.getText().toLowerCase();
         char slovo = s.charAt(0);
         boolean contains = false;
+        char foundChar = ' ';
         for (char c : slova) {
             if (c == slovo) {
                 contains = true;
+                 foundChar = c;
                 break;
             }
         }
         if (contains) {
+            mojPanel1.updateWordDisplay(foundChar, slovo);
             System.out.println("ima slovo");
         }
     }//GEN-LAST:event_jButton24ActionPerformed
 
     private void jButton25ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton25ActionPerformed
-        String s =jButton25.getText().toLowerCase();
+        String s =jButton1.getText().toLowerCase();
         char slovo = s.charAt(0);
         boolean contains = false;
+        char foundChar = ' ';
         for (char c : slova) {
             if (c == slovo) {
                 contains = true;
+                 foundChar = c;
                 break;
             }
         }
         if (contains) {
+            mojPanel1.updateWordDisplay(foundChar, slovo);
             System.out.println("ima slovo");
         }
     }//GEN-LAST:event_jButton25ActionPerformed
 
     private void jButton26ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton26ActionPerformed
-        String s =jButton26.getText().toLowerCase();
+        String s =jButton1.getText().toLowerCase();
         char slovo = s.charAt(0);
         boolean contains = false;
+        char foundChar = ' ';
         for (char c : slova) {
             if (c == slovo) {
                 contains = true;
+                 foundChar = c;
                 break;
             }
         }
         if (contains) {
+            mojPanel1.updateWordDisplay(foundChar, slovo);
             System.out.println("ima slovo");
         }
     }//GEN-LAST:event_jButton26ActionPerformed
@@ -958,31 +1035,37 @@ public class Igra extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton27ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        String s = jButton2.getText().toLowerCase();
+        String s =jButton1.getText().toLowerCase();
         char slovo = s.charAt(0);
         boolean contains = false;
+        char foundChar = ' ';
         for (char c : slova) {
             if (c == slovo) {
                 contains = true;
+                 foundChar = c;
                 break;
             }
         }
         if (contains) {
+            mojPanel1.updateWordDisplay(foundChar, slovo);
             System.out.println("ima slovo");
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        String s = jButton3.getText().toLowerCase();
+        String s =jButton1.getText().toLowerCase();
         char slovo = s.charAt(0);
         boolean contains = false;
+        char foundChar = ' ';
         for (char c : slova) {
             if (c == slovo) {
                 contains = true;
+                 foundChar = c;
                 break;
             }
         }
         if (contains) {
+            mojPanel1.updateWordDisplay(foundChar, slovo);
             System.out.println("ima slovo");
         }
     }//GEN-LAST:event_jButton3ActionPerformed
@@ -1061,6 +1144,7 @@ public class Igra extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JProgressBar jProgressBar1;
     private view.MojPanel mojPanel1;
     // End of variables declaration//GEN-END:variables
 }
